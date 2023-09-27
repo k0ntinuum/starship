@@ -46,6 +46,7 @@ void respond() {
         case 'M': new_rule();mountain();break;
         case 's': states++; if (states > 3) states = 2; new_rule();flash();break;
         case 'l': len++; if (len > 9) len = 2;new_rule();flash();break;
+        case 'i': if (states == 2) for (int i = 0; i < rule_length;i++) rule[i] = rule[i] == 1 ? 0 : 1;calc();plot();break;
     }
     second_to_last_in = last_in;
     last_in = c;
