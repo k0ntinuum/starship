@@ -6,7 +6,7 @@ char getch() {
     return c;
 }
 void flash() {
-    clear_screen();
+    //clear_screen();
     seed();
     calc();
     plot();

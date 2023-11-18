@@ -50,6 +50,7 @@ void calc() {
 	}
 }
 void plot_pixel(int r, int c, int col) {
+	cursor_to(r+3,c+3);
 	switch (display_mode) {
 		case 0 : print_block(cell[r][c]);break;
 		case 1 : print_symbol(cell[r][c]);break;
@@ -61,7 +62,10 @@ void plot_row(int r) {
 	cursor_to(r+2,2);
 	for (int c = 0 ; c < cols; c++) {
 		plot_pixel(r,c, cell[r][c]);
+		printf("\n");
+		
 	}
+	printf("\n");
 }
 void plot() {
 	for (int r = rows -1; r > -1; r--) {

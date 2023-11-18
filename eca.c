@@ -11,4 +11,5 @@
 #include "raw_mode.c"
 #include "ca.c"
 #include "respond.c"
+#include "demo.c"
 #include "main.c"
