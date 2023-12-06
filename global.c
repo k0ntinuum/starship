@@ -7,16 +7,16 @@ int current_target= 0;
 
 
 struct termios orig_termios;
-int rule_length = 8;
+int rule_length = 16;
 int rule_mode = 0;
 int rule_index = 0;
 int current_setting = 0;
 int hide_menu = 0;
 int code_mode = 0;
 int states = 3;
-int len = 3;
-int rows = 27;
-int cols = 81;
+int len = 2;
+int rows = 20;
+int cols = 40;
 int display_mode = 0;
 bool change = true;
 int last_in = 0;

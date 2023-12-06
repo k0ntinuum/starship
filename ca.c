@@ -8,18 +8,23 @@ void print_symbol(int s) {
 	}
 }
 void print_block(int code) {
+	int h = 0;
 	switch (code) {
         case 0 : set_color(0,0,0);break;
         case 1 : set_color(255,255,255);break;
-		case 2 : set_color(255,0,0);break;
-		case 3 : set_color(0,255,255);break;
+		case 2 : 
+			//h = arc4random_uniform(100) + 55;
+			h = 0;
+			set_color(h,h,h);
+			break;
+		case 3 : set_color(0,100,0);break;
 		case 4 : set_color(0,255,0);break;
     }
 	printf("\u2588");
 }
 void seed() {
 	for (int c = 0; c < cols; c++) {
-		cell[0][c] = rand()%states;
+		cell[0][c] = arc4random_uniform(states);
 	}
 }
 int f(int x, int b) {
@@ -56,37 +61,40 @@ void plot_pixel(int r, int c, int col) {
 		case 1 : print_symbol(cell[r][c]);break;
 		case 2 : printf("%d",cell[r][c]);break;
 	}
+	printf("\n");
+	
     
 }
 void plot_row(int r) {
 	cursor_to(r+2,2);
 	for (int c = 0 ; c < cols; c++) {
 		plot_pixel(r,c, cell[r][c]);
-		printf("\n");
+		//printf("\n");
 		
 	}
-	printf("\n");
+	//printf("\n");
 }
 void plot() {
 	for (int r = rows -1; r > -1; r--) {
 		cursor_to(r+2,2);
 		plot_row(r);
 	}
-	set_color(255,255,255);
-	cursor_to(rows+3,2);
-	for (int i = 0; i  < rule_length; i++ ) {
-		cursor_to(rows+3 + i/64,i%64 +2);
-		if (current_target == i) start_reverse_text();
-		print_symbol(rule[i]);
-		if (current_target == i) stop_reverse_text();
-	}
-	printf("\n");
+// 	set_color(255,255,255);
+// 	cursor_to(rows+3,2);
+// 	for (int i = 0; i  < rule_length; i++ ) {
+// 		cursor_to(rows+3 + i/64,i%64 +2);
+// 		if (current_target == i) start_reverse_text();
+// 		print_symbol(rule[i]);
+// 		if (current_target == i) stop_reverse_text();
+// 	}
+// 	printf("\n");
+// }
 }
 void new_rule() {
 	rule_length = f(len,states);
 	current_target = 0;
 	for (int i = 0; i < rule_length; i++) {
-		rule[i] = rand()%states;
+		rule[i] = arc4random_uniform(states);
 	}
 }
 void cont(int n) {
